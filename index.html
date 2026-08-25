@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0284C7;        /* Biru Modern / Sky Blue */
+            --primary: #0284C7;
             --primary-dark: #0369A1;
             --primary-light: #E0F2FE;
-            --accent: #F97316;         /* Orange Kontras */
+            --accent: #F97316;
             --text-main: #1F2937;
             --text-muted: #4B5563;
             --bg-body: #F8FAFC;
@@ -35,13 +35,12 @@
             line-height: 1.6;
         }
 
-        /* HEADER & NAVIGATION */
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
             padding: 12px 16px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             position: sticky;
             top: 0;
@@ -49,43 +48,11 @@
             border-bottom: 1px solid var(--border-color);
             width: 100%;
         }
-        .logo { height: 36px; object-fit: contain; }
-        .menu-toggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--primary);
-            background: var(--primary-light);
-            padding: 8px 12px;
-            border-radius: 10px;
-        }
+        .logo { height: 55px; object-fit: contain; max-width: 100%; }
 
-        /* SIDEBAR MENU */
-        .sidebar-menu {
-            position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
-            background: var(--white); transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 1100; box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-            display: flex; flex-direction: column; padding: 30px 20px;
-        }
-        .sidebar-menu.active { transform: translateX(0); }
-        .close-btn {
-            align-self: flex-end; font-size: 20px; background: var(--bg-body);
-            border: none; width: 36px; height: 36px; border-radius: 50%;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            color: var(--text-main);
-        }
-        .menu-list { list-style: none; margin-top: 30px; }
-        .menu-list li { margin-bottom: 12px; }
-        .menu-list a {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 16px; font-size: 16px; font-weight: 600; color: var(--text-main);
-            text-decoration: none; border-radius: 10px; background: var(--bg-body);
-        }
-
-        /* HERO SECTION DENGAN LATAR GEDUNG */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+            background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), 
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
             background-size: cover;
             color: var(--white);
@@ -93,32 +60,40 @@
             text-align: center;
             width: 100%;
         }
-        .hero h1 { 
-            font-size: 25px; 
-            font-weight: 700; 
-            margin-bottom: 14px; 
-            line-height: 1.3; 
-            letter-spacing: -0.5px;
-        }
-        .hero p { 
-            font-size: 14px; 
-            opacity: 0.9; 
-            margin-bottom: 25px; 
-            line-height: 1.5;
-        }
+        .hero h1 { font-size: 25px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; letter-spacing: -0.5px; }
+        .hero p { font-size: 14px; opacity: 0.9; margin-bottom: 25px; line-height: 1.5; }
         .btn-main {
             background: var(--accent); color: var(--white); padding: 12px 28px;
             border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); font-size: 15px;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.4); font-size: 15px;
         }
 
-        /* SECTION STYLING */
-        section { padding: 40px 16px; width: 100%; max-width: 600px; margin: 0 auto; }
+        section { 
+            padding: 40px 16px; 
+            width: 100%; 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+
+        /* ✅ JARAK BAWAH PROFIL — DITAMBAH SEDIKIT, TIDAK TERLALU NAIK */
+        #profil {
+            padding-bottom: 20px; /* Dulu 5px → sekarang 20px, turun sedikit */
+        }
+
+        /* ✅ FOKUS BISNIS — JARAK ATAS DITAMBAH SEDIKIT, TIDAK TERLALU MEPET */
+        #layanan {
+            padding-top: 15px; /* Dulu 0px → sekarang 15px, turun sedikit */
+            padding-bottom: 15px;
+        }
+
+        /* ✅ HUBUNGI KAMI — JARAK ATAS DITAMBAH SEDIKIT */
+        #kontak {
+            padding-top: 15px; /* Dulu 0px → sekarang 15px, turun sedikit */
+        }
+
         .section-header { text-align: center; margin-bottom: 30px; }
         .section-header span { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
-        .section-header h2 { font-size: 22px; font-weight: 700; color: var(--text-main); margin-top: 4px; }
 
-        /* PROFILE SECTION */
         .profile-grid { display: flex; flex-direction: column; gap: 16px; }
         .card-modern {
             background: var(--white); padding: 20px; border-radius: 16px;
@@ -132,7 +107,6 @@
         .card-modern h3 { font-size: 18px; margin-bottom: 8px; color: var(--text-main); }
         .card-modern p { color: var(--text-muted); font-size: 14px; }
 
-        /* SERVICES SECTION */
         .services-grid { display: flex; flex-direction: column; gap: 16px; }
         .service-card {
             background: var(--white); border-radius: 16px; overflow: hidden;
@@ -145,14 +119,12 @@
         .service-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
         .service-link { color: var(--primary); font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
 
-        /* CONTACT & MAPS SECTION */
         .contact-grid { display: flex; flex-direction: column; gap: 16px; }
         .contact-info-box { background: var(--primary); color: var(--white); padding: 24px; border-radius: 16px; }
         .contact-info-box h3 { font-size: 20px; margin-bottom: 16px; }
         .info-row { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; font-size: 14px; }
         .info-row i { font-size: 18px; margin-top: 2px; color: var(--accent); }
         
-        /* MAPS CONTAINER */
         .map-box {
             background: var(--white); padding: 12px; border-radius: 16px;
             border: 1px solid var(--border-color); overflow: hidden;
@@ -161,9 +133,7 @@
         .map-container {
             width: 100%; height: 220px; border-radius: 10px; overflow: hidden;
         }
-        .map-container iframe {
-            width: 100%; height: 100%; border: 0;
-        }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
 
         .contact-form-box { background: var(--white); padding: 24px; border-radius: 16px; border: 1px solid var(--border-color); }
         .form-control { margin-bottom: 14px; }
@@ -177,7 +147,6 @@
             padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer;
         }
 
-        /* GAYA TULISAN INDAH / SCRIPT (Diatur Pas 2 Baris) */
         .thank-you-text {
             font-family: 'Caveat', cursive;
             font-size: 24px;
@@ -189,55 +158,36 @@
             font-weight: 600;
         }
 
-        /* FOOTER */
         footer { background: #111827; color: #9CA3AF; padding: 30px 16px; text-align: center; font-size: 13px; width: 100%; }
         footer p { margin-bottom: 6px; }
 
-        /* FLOATING WHATSAPP */
         .wa-float {
             position: fixed; bottom: 20px; right: 20px; background: #25D366; color: var(--white);
             padding: 10px 16px; border-radius: 50px; display: flex; align-items: center; gap: 8px;
-            text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(37,211,102,0.4);
             z-index: 999;
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating WhatsApp -->
     <a href="https://wa.me/6285750681600" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp" style="font-size: 18px;"></i> <span>WhatsApp</span>
     </a>
 
-    <!-- Header -->
     <header class="header">
-        <img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/PT_WIDURI%20LOGO.png" alt="Logo BAS" class="logo">
-        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/LOGO%20PT.%20BENDI.png" alt="PT. BENDI ANTAR SELAMAT" class="logo">
     </header>
 
-    <!-- Sidebar Menu -->
-    <div class="sidebar-menu" id="sidebarMenu">
-        <button class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
-        <ul class="menu-list">
-            <li><a href="#beranda" onclick="toggleMenu()">Beranda <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
-            <li><a href="#profil" onclick="toggleMenu()">Profil <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
-            <li><a href="#layanan" onclick="toggleMenu()">Layanan <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
-            <li><a href="#kontak" onclick="toggleMenu()">Kontak <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
-        </ul>
-    </div>
-
-    <!-- Hero Section -->
     <section id="beranda" class="hero" style="max-width: 100%;">
         <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
         <p>Menghadirkan pelayanan terpadu yang profesional, berdedikasi tinggi, serta berkomitmen memberikan hasil terbaik bagi setiap mitra bisnis.</p>
         <a href="#layanan" class="btn-main">Jelajahi Layanan</a>
     </section>
 
-    <!-- Profil Section -->
     <section id="profil">
         <div class="section-header">
-            <span>Tentang Kami</span>
-            <h2>PT. BENDI ANTAR SELAMAT</h2>
+            <span>TENTANG KAMI</span>
         </div>
         <div class="profile-grid">
             <div class="card-modern">
@@ -258,10 +208,10 @@
         </div>
     </section>
 
-    <!-- Layanan Section -->
+    <!-- ✅ FOKUS BISNIS — JARAK PAS, TIDAK TERLALU MEPET -->
     <section id="layanan">
         <div class="section-header">
-            <span>Fokus Bisnis</span>
+            <span>FOKUS BISNIS</span>
             <h2>Layanan Unggulan Kami</h2>
         </div>
         <div class="services-grid">
@@ -316,10 +266,10 @@
         </div>
     </section>
 
-    <!-- Kontak & Maps Section -->
+    <!-- ✅ HUBUNGI KAMI — JARAK PAS, TIDAK TERLALU MEPET -->
     <section id="kontak">
         <div class="section-header">
-            <span>Hubungi Kami</span>
+            <span>HUBUNGI KAMI</span>
             <h2>Mari Berkolaborasi</h2>
         </div>
         <div class="contact-grid">
@@ -343,7 +293,6 @@
                 </div>
             </div>
 
-            <!-- Google Maps -->
             <div class="map-box">
                 <h3>Lokasi Kantor Kami</h3>
                 <div class="map-container">
@@ -381,7 +330,6 @@
                     <button type="submit" class="btn-submit">Kirim Pesan Sekarang</button>
                 </form>
 
-                <!-- Tulisan Indah 2 Baris Sesuai Permintaan -->
                 <div class="thank-you-text">
                     Terima kasih telah berkunjung<br>ke website kami
                 </div>
@@ -389,17 +337,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 PT. BENDI ANTAR SELAMAT.</p>
         <p>Seluruh Hak Cipta Dilindungi.</p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('sidebarMenu');
-            menu.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
