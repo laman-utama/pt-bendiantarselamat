@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PT. BENDI ANTAR SELAMAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0284C7;        /* Biru Modern / Sky Blue */
+            --primary-dark: #0369A1;
+            --primary-light: #E0F2FE;
+            --accent: #F97316;         /* Orange Kontras */
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+            --bg-body: #F8FAFC;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            width: 100%;
+        }
+        .logo { height: 36px; object-fit: contain; }
+        .menu-toggle {
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        /* SIDEBAR MENU */
+        .sidebar-menu {
+            position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+            background: var(--white); transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1100; box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; padding: 30px 20px;
+        }
+        .sidebar-menu.active { transform: translateX(0); }
+        .close-btn {
+            align-self: flex-end; font-size: 20px; background: var(--bg-body);
+            border: none; width: 36px; height: 36px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            color: var(--text-main);
+        }
+        .menu-list { list-style: none; margin-top: 30px; }
+        .menu-list li { margin-bottom: 12px; }
+        .menu-list a {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 16px; font-size: 16px; font-weight: 600; color: var(--text-main);
+            text-decoration: none; border-radius: 10px; background: var(--bg-body);
+        }
+
+        /* HERO SECTION DENGAN LATAR GEDUNG */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            padding: 65px 16px 80px;
+            text-align: center;
+            width: 100%;
+        }
+        .hero h1 { 
+            font-size: 25px; 
+            font-weight: 700; 
+            margin-bottom: 14px; 
+            line-height: 1.3; 
+            letter-spacing: -0.5px;
+        }
+        .hero p { 
+            font-size: 14px; 
+            opacity: 0.9; 
+            margin-bottom: 25px; 
+            line-height: 1.5;
+        }
+        .btn-main {
+            background: var(--accent); color: var(--white); padding: 12px 28px;
+            border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); font-size: 15px;
+        }
+
+        /* SECTION STYLING */
+        section { padding: 40px 16px; width: 100%; max-width: 600px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-header span { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
+        .section-header h2 { font-size: 22px; font-weight: 700; color: var(--text-main); margin-top: 4px; }
+
+        /* PROFILE SECTION */
+        .profile-grid { display: flex; flex-direction: column; gap: 16px; }
+        .card-modern {
+            background: var(--white); padding: 20px; border-radius: 16px;
+            border: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .card-icon {
+            width: 45px; height: 45px; background: var(--primary-light); color: var(--primary);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; margin-bottom: 14px;
+        }
+        .card-modern h3 { font-size: 18px; margin-bottom: 8px; color: var(--text-main); }
+        .card-modern p { color: var(--text-muted); font-size: 14px; }
+
+        /* SERVICES SECTION */
+        .services-grid { display: flex; flex-direction: column; gap: 16px; }
+        .service-card {
+            background: var(--white); border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--border-color); display: flex; flex-direction: column;
+        }
+        .service-img-wrapper { height: 160px; width: 100%; overflow: hidden; }
+        .service-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .service-body { padding: 16px; display: flex; flex-direction: column; }
+        .service-body h3 { font-size: 16px; margin-bottom: 6px; color: var(--text-main); }
+        .service-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+        .service-link { color: var(--primary); font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+
+        /* CONTACT & MAPS SECTION */
+        .contact-grid { display: flex; flex-direction: column; gap: 16px; }
+        .contact-info-box { background: var(--primary); color: var(--white); padding: 24px; border-radius: 16px; }
+        .contact-info-box h3 { font-size: 20px; margin-bottom: 16px; }
+        .info-row { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; font-size: 14px; }
+        .info-row i { font-size: 18px; margin-top: 2px; color: var(--accent); }
+        
+        /* MAPS CONTAINER */
+        .map-box {
+            background: var(--white); padding: 12px; border-radius: 16px;
+            border: 1px solid var(--border-color); overflow: hidden;
+        }
+        .map-box h3 { font-size: 16px; margin-bottom: 10px; color: var(--text-main); }
+        .map-container {
+            width: 100%; height: 220px; border-radius: 10px; overflow: hidden;
+        }
+        .map-container iframe {
+            width: 100%; height: 100%; border: 0;
+        }
+
+        .contact-form-box { background: var(--white); padding: 24px; border-radius: 16px; border: 1px solid var(--border-color); }
+        .form-control { margin-bottom: 14px; }
+        .form-control label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
+        .form-control input, .form-control select, .form-control textarea {
+            width: 100%; padding: 10px 14px; border: 1px solid var(--border-color);
+            border-radius: 8px; font-family: inherit; font-size: 14px; outline: none; background: #fff;
+        }
+        .btn-submit {
+            background: var(--primary); color: var(--white); border: none; width: 100%;
+            padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer;
+        }
+
+        /* GAYA TULISAN INDAH / SCRIPT (Diatur Pas 2 Baris) */
+        .thank-you-text {
+            font-family: 'Caveat', cursive;
+            font-size: 24px;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.35;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer { background: #111827; color: #9CA3AF; padding: 30px 16px; text-align: center; font-size: 13px; width: 100%; }
+        footer p { margin-bottom: 6px; }
+
+        /* FLOATING WHATSAPP */
+        .wa-float {
+            position: fixed; bottom: 20px; right: 20px; background: #25D366; color: var(--white);
+            padding: 10px 16px; border-radius: 50px; display: flex; align-items: center; gap: 8px;
+            text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6285750681600" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size: 18px;"></i> <span>WhatsApp</span>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/PT_WIDURI%20LOGO.png" alt="Logo BAS" class="logo">
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <button class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+        <ul class="menu-list">
+            <li><a href="#beranda" onclick="toggleMenu()">Beranda <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
+            <li><a href="#profil" onclick="toggleMenu()">Profil <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
+            <li><a href="#layanan" onclick="toggleMenu()">Layanan <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
+            <li><a href="#kontak" onclick="toggleMenu()">Kontak <i class="fas fa-chevron-right" style="font-size: 12px;"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero" style="max-width: 100%;">
+        <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
+        <p>Menghadirkan pelayanan terpadu yang profesional, berdedikasi tinggi, serta berkomitmen memberikan hasil terbaik bagi setiap mitra bisnis.</p>
+        <a href="#layanan" class="btn-main">Jelajahi Layanan</a>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil">
+        <div class="section-header">
+            <span>Tentang Kami</span>
+            <h2>PT. BENDI ANTAR SELAMAT</h2>
+        </div>
+        <div class="profile-grid">
+            <div class="card-modern">
+                <div class="card-icon"><i class="fas fa-building"></i></div>
+                <h3>Profil Singkat</h3>
+                <p>Bergerak di bidang jasa tenaga kerja, kebersihan, keamanan, pengadaan barang, perdagangan umum, percetakan, konveksi, hingga mekanikal-elektrikal dengan prinsip: <strong>Sigap – Cepat – Tuntas</strong>.</p>
+            </div>
+            <div class="card-modern">
+                <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Visi Utama</h3>
+                <p>Menjadi penyedia jasa terdepan di Indonesia yang mengutamakan kualitas pelayanan prima melalui manajemen dan SDM yang handal.</p>
+            </div>
+            <div class="card-modern">
+                <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3>Misi Kami</h3>
+                <p>Membuka lapangan kerja luas serta menerapkan pelatihan profesional agar setiap penugasan dapat terselesaikan secara tepat dan terjamin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan">
+        <div class="section-header">
+            <span>Fokus Bisnis</span>
+            <h2>Layanan Unggulan Kami</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/CLEANING%20SERVICE.JPG" alt="Cleaning"></div>
+                <div class="service-body">
+                    <h3>Cleaning Service</h3>
+                    <p>Tenaga kebersihan profesional untuk perkantoran, gedung komersial, hingga fasilitas kesehatan.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/GARDENER.JPG" alt="Gardener"></div>
+                <div class="service-body">
+                    <h3>Gardener / Taman</h3>
+                    <p>Perawatan, penataan, dan pemeliharaan lanskap taman agar senantiasa asri dan indah.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/laman-utama/pt-windudualestari/main/SECURITY.JPG" alt="Security"></div>
+                <div class="service-body">
+                    <h3>Keamanan / Security</h3>
+                    <p>Personel pengamanan terlatih, disiplin, dan bersertifikat resmi untuk perlindungan aset.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/PERALATAN%20KIMIA.JPG" alt="Pengadaan"></div>
+                <div class="service-body">
+                    <h3>Pengadaan Barang & Kimia</h3>
+                    <p>Penyediaan bahan kimia pembersih berkualitas tinggi serta peralatan kebersihan lengkap.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/MEKANIKAL.JPG" alt="MEP"></div>
+                <div class="service-body">
+                    <h3>MEP (Mekanikal & Elektrikal)</h3>
+                    <p>Instalasi, perbaikan, serta pemeliharaan sistem kelistrikan, AC, dan perpipaan.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/laman-utama/pt-windudualestari/main/KONTRAKTOR_KONSTRUKSI.JPG" alt="Kontraktor"></div>
+                <div class="service-body">
+                    <h3>Kontraktor & Konstruksi</h3>
+                    <p>Layanan pembangunan dan renovasi gedung, ruko, maupun rumah tinggal profesional.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Maps Section -->
+    <section id="kontak">
+        <div class="section-header">
+            <span>Hubungi Kami</span>
+            <h2>Mari Berkolaborasi</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info-box">
+                <h3>Informasi Kontak</h3>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>Jl. Kihajar Dewantara, RT 01/ RW 12 No. 61, Kel. Sawah Lama, Kec. Ciputat, Tangerang, 15413, Banten</div>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>0857 5068 1600<br>0878 4100 5054<br>0813 8800 0958</div>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-envelope"></i>
+                    <div>basproject.services@gmail.com</div>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <div>Senin – Sabtu: 08.00 – 17.00 WITA</div>
+                </div>
+            </div>
+
+            <!-- Google Maps -->
+            <div class="map-box">
+                <h3>Lokasi Kantor Kami</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.864387063124!2d106.738096!3d-6.319765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69effa6e61f1c7%3A0x6b77c6da8f615364!2sJl.%20Ki%20Hajar%20Dewantara%20No.61%2C%20Sawah%20Lama%2C%20Kec.%20Ciputat%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015413!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <h3 style="margin-bottom: 16px; font-size: 18px; color: var(--text-main);">Kirim Pesan Cepat</h3>
+                <form>
+                    <div class="form-control">
+                        <label>Nama Lengkap</label>
+                        <input type="text" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-control">
+                        <label>Nomor Telepon / WhatsApp</label>
+                        <input type="tel" placeholder="Contoh: 08123456789" required>
+                    </div>
+                    <div class="form-control">
+                        <label>Pilih Layanan</label>
+                        <select required>
+                            <option value="">-- Pilih Layanan --</option>
+                            <option>Cleaning Service</option>
+                            <option>Gardener / Taman</option>
+                            <option>Keamanan / Security</option>
+                            <option>Pengadaan Barang & Kimia</option>
+                            <option>MEP (Mekanikal Elektrikal)</option>
+                            <option>Kontraktor & Konstruksi</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label>Pesan / Detail Kebutuhan</label>
+                        <textarea rows="3" placeholder="Tuliskan detail kebutuhan Anda..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim Pesan Sekarang</button>
+                </form>
+
+                <!-- Tulisan Indah 2 Baris Sesuai Permintaan -->
+                <div class="thank-you-text">
+                    Terima kasih telah berkunjung<br>ke website kami
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 PT. BENDI ANTAR SELAMAT.</p>
+        <p>Seluruh Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('sidebarMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
