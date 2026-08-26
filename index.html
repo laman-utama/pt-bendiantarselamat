@@ -2,367 +2,1036 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>PT. BENDI ANTAR SELAMAT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0284C7;
-            --primary-dark: #0369A1;
+            --primary-dark: #032E85;
+            --primary-darker: #001E5C;
+            --accent-red: #E53935;
             --primary-light: #E0F2FE;
-            --accent: #F97316;
+            --accent-green: #25D366;
             --text-main: #1F2937;
-            --text-muted: #4B5563;
+            --text-white: #FFFFFF;
             --bg-body: #F8FAFC;
-            --white: #FFFFFF;
             --border-color: #E2E8F0;
-            --shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(2,132,199,0.12);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 9999px;
+            --radius-lg: 16px;
+            --transition: all 0.25s ease;
+            --font-family: 'Plus Jakarta Sans', sans-serif;
+            --font-handwriting: 'Caveat', cursive;
+            --font-xs: 12px;
+            --font-sm: 13px;
+            --font-base: 14px;
+            --font-lg: 17px;
+            --font-xl: 20px;
+            --font-2xl: 26px;
+            --nav-height: 64px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-body) !important;
+            font-family: var(--font-family);
+            font-size: var(--font-base);
+            font-weight: 500;
+            background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 0;
         }
 
-        .header {
-            background: rgba(255,255,255,0.95) !important;
-            backdrop-filter: blur(10px);
+        /* ===== NAVIGASI ===== */
+        .navbar {
+            background: linear-gradient(180deg, #032E85, #001E5C);
+            width: 100%;
             padding: 12px 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            gap: 6px;
+            flex-wrap: nowrap;
             width: 100%;
         }
-        .logo { height: 55px; object-fit: contain; max-width: 100%; }
+
+        .nav-link {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            padding: 10px 16px;
+            position: relative;
+            background-color: transparent;
+            border-radius: 8px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #FF6F60;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #FFFFFF;
+            background-color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        /* ===== LOGO HEADER ===== */
+        .logo-header {
+            background-color: #FFFFFF;
+            width: 100%;
+            padding: 20px 20px;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 0;
+        }
+
+        .logo-header .logo {
+            max-width: 100%;
+            max-height: 100px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-wrapper {
+            background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+            width: 100%;
+            position: relative;
+        }
 
         .hero {
-            position: relative;
-            background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), 
-                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
-            background-size: cover;
-            color: var(--white);
-            padding: 65px 16px 80px;
+            color: var(--text-white);
+            padding: 40px 20px 50px;
             text-align: center;
-            width: 100%;
         }
-        .hero h1 { font-size: 25px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; letter-spacing: -0.5px; }
-        .hero p { font-size: 14px; opacity: 0.9; margin-bottom: 25px; line-height: 1.5; }
+
+        .hero h1 {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: var(--font-lg);
+            opacity: 0.95;
+            margin-bottom: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
         .btn-main {
-            background: var(--accent); color: var(--white); padding: 12px 28px;
-            border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block;
-            box-shadow: 0 4px 15px rgba(249,115,22,0.4); font-size: 15px;
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: var(--font-base);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        section { 
-            padding: 40px 16px; 
-            width: 100%; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            background: transparent;
+        .btn-main:hover {
+            background-color: #C62828;
         }
 
-        /* ✅ JARAK DIATUR PAS — TIDAK TERLALU NAIK, TIDAK TERLALU JAUH */
-        #profil {
-            padding-bottom: 20px;
-        }
-        #layanan {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-        #kontak {
-            padding-top: 15px;
+        /* ===== SECTION ===== */
+        section {
+            padding: 35px 20px;
+            max-width: 680px;
+            margin: 0 auto;
         }
 
-        .section-header { text-align: center; margin-bottom: 30px; }
-        .section-header span { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
-
-        .profile-grid { display: flex; flex-direction: column; gap: 16px; }
-        .card-modern {
-            background: var(--white) !important; 
-            padding: 20px; 
-            border-radius: 16px;
-            border: 1px solid var(--border-color); 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .section-header {
+            text-align: center;
+            margin-bottom: 6px;
         }
-        .card-icon {
-            width: 45px; height: 45px; background: var(--primary-light); color: var(--primary);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 20px; margin-bottom: 14px;
-        }
-        .card-modern h3 { font-size: 18px; margin-bottom: 8px; color: var(--text-main); }
-        .card-modern p { color: var(--text-muted); font-size: 14px; }
 
-        .services-grid { display: flex; flex-direction: column; gap: 16px; }
-        .service-card {
-            background: var(--white) !important; 
-            border-radius: 16px; 
-            overflow: hidden;
-            border: 1px solid var(--border-color); 
-            display: flex; 
+        .section-header span {
+            font-size: var(--font-sm);
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .section-header h2 {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        /* ===== TENTANG KAMI ===== */
+        .profile-grid {
+            display: flex;
             flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
         }
-        .service-img-wrapper { height: 160px; width: 100%; overflow: hidden; }
-        .service-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .service-body { padding: 16px; display: flex; flex-direction: column; }
-        .service-body h3 { font-size: 16px; margin-bottom: 6px; color: var(--text-main); }
-        .service-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-        .service-link { color: var(--primary); font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
 
-        .contact-grid { display: flex; flex-direction: column; gap: 16px; }
-        .contact-info-box { 
-            background: var(--primary) !important; 
-            color: var(--white); 
-            padding: 24px; 
-            border-radius: 16px; 
+        .card-modern {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
-        .contact-info-box h3 { font-size: 20px; margin-bottom: 16px; }
-        .info-row { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; font-size: 14px; }
-        .info-row i { font-size: 18px; margin-top: 2px; color: var(--accent); }
-        
-        .map-box {
-            background: var(--white) !important; 
-            padding: 12px; 
-            border-radius: 16px;
-            border: 1px solid var(--border-color); 
+
+        .card-modern:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin: 0 auto 14px;
+        }
+
+        .card-modern h3 {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-align: center;
+            color: var(--primary-dark);
+        }
+
+        .card-modern p {
+            font-size: var(--font-base);
+            color: var(--text-main);
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .team-section, .certificate-section {
+            background: #fff;
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .team-section h3, .certificate-section h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+
+        .team-img, .certificate-img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ===== LAYANAN ===== */
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-img-wrapper {
+            height: 170px;
             overflow: hidden;
         }
-        .map-box h3 { font-size: 16px; margin-bottom: 10px; color: var(--text-main); }
-        .map-container {
-            width: 100%; height: 220px; border-radius: 10px; overflow: hidden;
-        }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-        .contact-form-box { 
-            background: var(--white) !important; 
-            padding: 24px; 
-            border-radius: 16px; 
-            border: 1px solid var(--border-color); 
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .form-control { margin-bottom: 14px; }
-        .form-control label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
-        .form-control input, .form-control select, .form-control textarea {
-            width: 100%; padding: 10px 14px; border: 1px solid var(--border-color);
-            border-radius: 8px; font-family: inherit; font-size: 14px; outline: none; background: #fff;
+
+        .service-body {
+            padding: 20px;
+            text-align: center;
         }
+
+        .service-body h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .service-body p {
+            font-size: var(--font-base);
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            background-color: var(--primary-light);
+            padding: 12px 32px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            margin: 0 auto;
+        }
+
+        .service-link:hover {
+            background-color: #BAE6FD;
+            color: var(--primary-darker);
+        }
+
+        /* ===== KONTAK ===== */
+        .contact-info-box {
+            background: linear-gradient(135deg, #0284C7, #0369A1);
+            color: var(--text-white);
+            padding: 24px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 24px;
+            margin-top: 0;
+        }
+
+        .contact-info-box h3 {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .info-row i {
+            font-size: 20px;
+            margin-top: 2px;
+            color: #FFD700;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+
+        .info-row span {
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
+        }
+
+        /* ===== MAP & FORM ===== */
+        .map-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+
+        .map-box h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--primary-dark);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contact-form-box {
+            background: #fff;
+            padding: 24px 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 0;
+        }
+
+        .contact-form-box h3 {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary-dark);
+        }
+
+        .form-control {
+            margin-bottom: 18px;
+        }
+
+        .form-control label {
+            display: block;
+            font-size: var(--font-sm);
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #CBD5E1;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: var(--font-base);
+            font-weight: 500;
+            outline: none;
+            transition: var(--transition);
+            background-color: #FAFBFC;
+        }
+
+        .form-control input:focus,
+        .form-control select:focus,
+        .form-control textarea:focus {
+            border-color: var(--primary);
+            background-color: #fff;
+            box-shadow: 0 0 0 2px rgba(2,132,199,0.1);
+        }
+
+        .form-control textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
         .btn-submit {
-            background: var(--primary); color: var(--white); border: none; width: 100%;
-            padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer;
+            width: 100%;
+            background: linear-gradient(135deg, #0284C7, #0369A1);
+            color: var(--text-white);
+            border: none;
+            padding: 13px;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-base);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #0369A1, #0284C7);
+        }
+
+        .peta-indonesia-box {
+            margin-top: 24px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .peta-indonesia-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .visitor-stats {
+            background: linear-gradient(135deg, #1E3A5F, #2C4A73);
+            color: #fff;
+            padding: 24px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 28px;
+            margin-bottom: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .visitor-stats h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            color: #BFD7FF;
+            margin-bottom: 16px;
+        }
+
+        .stats-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: var(--font-base);
+            margin-bottom: 10px;
+        }
+
+        .stats-item span.icon {
+            font-size: 18px;
+            color: #FFD700;
+            width: 24px;
+            text-align: center;
+        }
+
+        .stats-note {
+            margin-top: 14px;
+            font-size: var(--font-sm);
+            color: #BFD7FF;
+            font-style: italic;
+            opacity: 0.8;
         }
 
         .thank-you-text {
-            font-family: 'Caveat', cursive;
-            font-size: 24px;
+            font-family: var(--font-handwriting);
+            font-size: 16px;
             color: var(--primary-dark);
             text-align: center;
-            margin-top: 20px;
-            line-height: 1.35;
-            letter-spacing: 0.5px;
+            margin-top: 0;
+            margin-bottom: 8px;
+            line-height: 1.2;
             font-weight: 600;
+            padding: 0;
         }
 
-        footer { 
-            background: #111827 !important; 
-            color: #9CA3AF; 
-            padding: 30px 16px; 
-            text-align: center; 
-            font-size: 13px; 
-            width: 100%; 
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0F172A;
+            color: #94A3B8;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: var(--font-sm);
+            margin-top: 0;
+            line-height: 1.6;
         }
-        footer p { margin-bottom: 6px; }
 
+        footer p {
+            color: #CBD5E1;
+        }
+
+        /* ===== TOMBOL WHATSAPP FLOATING — DIPERBAIKI ===== */
         .wa-float {
-            position: fixed; bottom: 20px; right: 20px; background: #25D366; color: var(--white);
-            padding: 10px 16px; border-radius: 50px; display: flex; align-items: center; gap: 8px;
-            text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(37,211,102,0.4);
-            z-index: 999;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+            z-index: 9999;
+            transition: var(--transition);
+        }
+
+        .wa-float:hover {
+            background-color: #16A34A;
+            color: #fff;
+        }
+
+        .wa-float i {
+            font-size: 22px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 520px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            .nav-container {
+                gap: 2px;
+            }
+            .nav-link {
+                font-size: 10.5px;
+                padding: 8px 10px;
+            }
+            .logo-header {
+                padding-top: 75px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .logo-header .logo {
+                max-height: 80px;
+            }
+            section {
+                padding: 30px 16px;
+            }
+            .contact-form-box, .contact-info-box {
+                padding: 20px 16px;
+            }
+            .hero {
+                padding: 30px 16px 40px;
+            }
+            .hero h1 {
+                font-size: 22px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .section-header h2 {
+                font-size: 20px;
+            }
+            .thank-you-text {
+                font-size: 15px;
+            }
+            .info-row {
+                font-size: 14px;
+            }
+            .service-link {
+                font-size: 15px;
+                padding: 10px 24px;
+            }
+            :root {
+                --nav-height: 56px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/6285750681600" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp" style="font-size: 18px;"></i> <span>WhatsApp</span>
-    </a>
+    <!-- ===== NAVIGASI ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#beranda" class="nav-link active" data-target="beranda" id="btn-beranda">BERANDA</a>
+            <a href="#tentang" class="nav-link" data-target="tentang">TENTANG KAMI</a>
+            <a href="#layanan" class="nav-link" data-target="layanan">LAYANAN</a>
+            <a href="#kontak" class="nav-link" data-target="kontak">KONTAK</a>
+        </div>
+    </nav>
 
-    <header class="header">
-        <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/LOGO%20PT.%20BENDI.png" alt="PT. BENDI ANTAR SELAMAT" class="logo">
+    <!-- ===== LOGO HEADER ===== -->
+    <header class="logo-header" id="beranda">
+        <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/LOGO%20PT.%20BAS.png" alt="PT. BENDI ANTAR SELAMAT" class="logo">
     </header>
 
-    <section id="beranda" class="hero" style="max-width: 100%;">
-        <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
-        <p>Menghadirkan pelayanan terpadu yang profesional, berdedikasi tinggi, serta berkomitmen memberikan hasil terbaik bagi setiap mitra bisnis.</p>
-        <a href="#layanan" class="btn-main">Jelajahi Layanan</a>
-    </section>
+    <!-- ===== HERO ===== -->
+    <div class="hero-wrapper">
+        <section class="hero">
+            <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
+            <p>Menghadirkan pelayanan terpadu yang profesional, berdedikasi tinggi, serta berkomitmen menjaga kualitas terbaik bagi mitra kami.</p>
+            <a href="#layanan" class="btn-main">Lihat Layanan Kami</a>
+        </section>
+    </div>
 
-    <section id="profil">
+    <!-- ===== TENTANG KAMI ===== -->
+    <section id="tentang">
         <div class="section-header">
-            <span>TENTANG KAMI</span>
+            <span>Tentang Kami</span>
+            <h2>Profil Perusahaan</h2>
         </div>
         <div class="profile-grid">
             <div class="card-modern">
                 <div class="card-icon"><i class="fas fa-building"></i></div>
                 <h3>Profil Singkat</h3>
-                <p>Bergerak di bidang jasa tenaga kerja, kebersihan, keamanan, pengadaan barang, perdagangan umum, percetakan, konveksi, hingga mekanikal-elektrikal dengan prinsip: <strong>Sigap – Cepat – Tuntas</strong>.</p>
+                <p><strong>PT. BENDI ANTAR SELAMAT</strong> bergerak di bidang jasa tenaga kerja, kebersihan, keamanan, pengadaan barang, perdagangan umum, serta mekanikal-elektrikal dengan prinsip: <strong>Sigap – Cepat – Tuntas</strong>.</p>
             </div>
             <div class="card-modern">
                 <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>Visi Utama</h3>
-                <p>Menjadi penyedia jasa terdepan di Indonesia yang mengutamakan kualitas pelayanan prima melalui manajemen dan SDM yang handal.</p>
+                <h3>Visi Perusahaan</h3>
+                <p>Menjadi penyedia jasa terdepan dan terpercaya di Indonesia yang mengutamakan kualitas pelayanan prima melalui manajemen dan SDM yang handal serta profesional.</p>
             </div>
             <div class="card-modern">
                 <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3>Misi Kami</h3>
-                <p>Membuka lapangan kerja luas serta menerapkan pelatihan profesional agar setiap penugasan dapat terselesaikan secara tepat dan terjamin.</p>
+                <h3>Misi Perusahaan</h3>
+                <p>Membuka lapangan kerja luas, menerapkan standar pelatihan profesional, serta menjamin setiap penugasan diselesaikan tepat waktu dan dengan kualitas terbaik.</p>
             </div>
+        </div>
+        <div class="team-section">
+            <h3>Tim Kami</h3>
+            <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/TIM%20BAS.JPG.jpg" alt="Tim PT. BENDI ANTAR SELAMAT" class="team-img">
+        </div>
+        <div class="certificate-section">
+            <h3>Sertifikat & Legalitas</h3>
+            <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/SERTIFIKAT.JPG" alt="Sertifikat PT. BENDI ANTAR SELAMAT" class="certificate-img">
         </div>
     </section>
 
+    <!-- ===== LAYANAN ===== -->
     <section id="layanan">
         <div class="section-header">
-            <span>FOKUS BISNIS</span>
+            <span>Fokus Bisnis</span>
             <h2>Layanan Unggulan Kami</h2>
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/CLEANING%20SERVICE.JPG" alt="Cleaning"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/CS.JPG.jpeg" alt="Cleaning Service">
+                </div>
                 <div class="service-body">
                     <h3>Cleaning Service</h3>
-                    <p>Tenaga kebersihan profesional untuk perkantoran, gedung komersial, hingga fasilitas kesehatan.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <p>Tenaga kebersihan profesional untuk perkantoran, gedung komersial, pabrik, hingga fasilitas kesehatan.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/GARDENER.JPG" alt="Gardener"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/GARDENER.JPG.jpeg" alt="Gardener & Taman">
+                </div>
                 <div class="service-body">
-                    <h3>Gardener / Taman</h3>
-                    <p>Perawatan, penataan, dan pemeliharaan lanskap taman agar senantiasa asri dan indah.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <h3>Gardener & Taman</h3>
+                    <p>Perawatan, penataan, dan pemeliharaan lanskap taman agar senantiasa asri, rapi, dan indah.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/laman-utama/pt-windudualestari/main/SECURITY.JPG" alt="Security"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/SECURITY.jpeg" alt="Keamanan / Security">
+                </div>
                 <div class="service-body">
                     <h3>Keamanan / Security</h3>
-                    <p>Personel pengamanan terlatih, disiplin, dan bersertifikat resmi untuk perlindungan aset.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <p>Personel pengamanan terlatih, disiplin, dan bersertifikat resmi untuk perlindungan aset dan lingkungan.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/PERALATAN%20KIMIA.JPG" alt="Pengadaan"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/CHEMICAL.JPG.jpg" alt="Pengadaan Barang & Kimia">
+                </div>
                 <div class="service-body">
                     <h3>Pengadaan Barang & Kimia</h3>
-                    <p>Penyediaan bahan kimia pembersih berkualitas tinggi serta peralatan kebersihan lengkap.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <p>Penyediaan bahan kimia pembersih berkualitas tinggi serta peralatan kebersihan lengkap dan aman.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/awsolutions-id/widuri-company-profile/main/MEKANIKAL.JPG" alt="MEP"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/MEKANIKAL.JPG.jpeg" alt="Mekanikal & Elektrikal">
+                </div>
                 <div class="service-body">
-                    <h3>MEP (Mekanikal & Elektrikal)</h3>
-                    <p>Instalasi, perbaikan, serta pemeliharaan sistem kelistrikan, AC, dan perpipaan.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <h3>Mekanikal & Elektrikal</h3>
+                    <p>Instalasi, perbaikan, serta pemeliharaan sistem kelistrikan, AC, dan perpipaan oleh tenaga ahli.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-img-wrapper"><img src="https://raw.githubusercontent.com/laman-utama/pt-windudualestari/main/KONTRAKTOR_KONSTRUKSI.JPG" alt="Kontraktor"></div>
+                <div class="service-img-wrapper">
+                    <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/KONTAKTOR.JPG.jpg" alt="Kontraktor & Konstruksi">
+                </div>
                 <div class="service-body">
                     <h3>Kontraktor & Konstruksi</h3>
-                    <p>Layanan pembangunan dan renovasi gedung, ruko, maupun rumah tinggal profesional.</p>
-                    <a href="#kontak" class="service-link">Pesan Layanan <i class="fas fa-arrow-right"></i></a>
+                    <p>Layanan pembangunan dan renovasi gedung, ruko, maupun rumah tinggal dengan kualitas terjamin.</p>
+                    <a href="#kontak" class="service-link">Pesan Layanan →</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== KONTAK ===== -->
     <section id="kontak">
         <div class="section-header">
-            <span>HUBUNGI KAMI</span>
-            <h2>Mari Berkolaborasi</h2>
+            <span>Hubungi Kami</span>
+            <h2>Silakan Hubungi Kami</h2>
         </div>
-        <div class="contact-grid">
-            <div class="contact-info-box">
-                <h3>Informasi Kontak</h3>
-                <div class="info-row">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>Jl. Kihajar Dewantara, RT 01/ RW 12 No. 61, Kel. Sawah Lama, Kec. Ciputat, Tangerang, 15413, Banten</div>
+
+        <div class="contact-info-box">
+            <h3>Informasi Kontak</h3>
+            <div class="info-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. Kihajar Dewantara No. 61<br>RT 01 / RW 12 Kel. Sawah Lama<br>Kec. Ciputat, Tangerang 15413<br>Banten</span>
+            </div>
+            <div class="info-row">
+                <i class="fas fa-phone"></i>
+                <span>0857 5068 1600<br>0878 4100 5054<br>0813 8800 0958</span>
+            </div>
+            <div class="info-row">
+                <i class="fas fa-envelope"></i>
+                <span>basproject.services@gmail.com</span>
+            </div>
+            <div class="info-row">
+                <i class="fas fa-clock"></i>
+                <span>Senin – Sabtu: 08.00 – 17.00 WITA</span>
+            </div>
+        </div>
+
+        <div class="map-box">
+            <h3>Lokasi Kantor Kami</h3>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.864387063124!2d106.738096!3d-6.319765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69effa6e61f1c7%3A0x6b77c6da8f615364!2sJl.%20Ki%20Hajar%20Dewantara%20No.61%2C%20Sawah%20Lama%2C%20Kec.%20Ciputat%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015413!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="contact-form-box">
+            <h3>Kirim Pesan Sekarang</h3>
+            <form action="#" method="POST">
+                <div class="form-control">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
                 </div>
-                <div class="info-row">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>0857 5068 1600<br>0878 4100 5054<br>0813 8800 0958</div>
+                <div class="form-control">
+                    <label for="telepon">Nomor WhatsApp / Telepon</label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
                 </div>
-                <div class="info-row">
-                    <i class="fas fa-envelope"></i>
-                    <div>basproject.services@gmail.com</div>
+                <div class="form-control">
+                    <label for="layanan">Jenis Layanan</label>
+                    <select id="layanan" name="layanan" required>
+                        <option value="">-- Pilih Layanan --</option>
+                        <option>Cleaning Service</option>
+                        <option>Gardener & Taman</option>
+                        <option>Keamanan / Security</option>
+                        <option>Pengadaan Barang & Kimia</option>
+                        <option>Mekanikal & Elektrikal</option>
+                        <option>Kontraktor & Konstruksi</option>
+                        <option>Lainnya</option>
+                    </select>
                 </div>
-                <div class="info-row">
-                    <i class="fas fa-clock"></i>
-                    <div>Senin – Sabtu: 08.00 – 17.00 WITA</div>
+                <div class="form-control">
+                    <label for="pesan">Pesan / Detail Kebutuhan</label>
+                    <textarea id="pesan" name="pesan" placeholder="Jelaskan detail kebutuhan Anda..." required></textarea>
                 </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Kirim Pesan Sekarang
+                </button>
+            </form>
+
+            <div class="peta-indonesia-box">
+                <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/PETA%20INDONESIA.jpeg" alt="Peta Indonesia">
             </div>
 
-            <div class="map-box">
-                <h3>Lokasi Kantor Kami</h3>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.864387063124!2d106.738096!3d-6.319765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69effa6e61f1c7%3A0x6b77c6da8f615364!2sJl.%20Ki%20Hajar%20Dewantara%20No.61%2C%20Sawah%20Lama%2C%20Kec.%20Ciputat%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015413!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="visitor-stats">
+                <h3>Statistik Pengunjung</h3>
+                <div class="stats-item">
+                    <span class="icon">👥</span>
+                    <span>Total Pengunjung: <span id="totalVisitors">0</span></span>
                 </div>
+                <div class="stats-item">
+                    <span class="icon">📅</span>
+                    <span>Hari Ini: <span id="todayVisitors">0</span></span>
+                </div>
+                <div class="stats-item">
+                    <span class="icon">📊</span>
+                    <span>Bulan Ini: <span id="monthVisitors">0</span></span>
+                </div>
+                <p class="stats-note">Data pengunjung website</p>
             </div>
 
-            <div class="contact-form-box">
-                <h3 style="margin-bottom: 16px; font-size: 18px; color: var(--text-main);">Kirim Pesan Cepat</h3>
-                <form>
-                    <div class="form-control">
-                        <label>Nama Lengkap</label>
-                        <input type="text" placeholder="Masukkan nama Anda" required>
-                    </div>
-                    <div class="form-control">
-                        <label>Nomor Telepon / WhatsApp</label>
-                        <input type="tel" placeholder="Contoh: 08123456789" required>
-                    </div>
-                    <div class="form-control">
-                        <label>Pilih Layanan</label>
-                        <select required>
-                            <option value="">-- Pilih Layanan --</option>
-                            <option>Cleaning Service</option>
-                            <option>Gardener / Taman</option>
-                            <option>Keamanan / Security</option>
-                            <option>Pengadaan Barang & Kimia</option>
-                            <option>MEP (Mekanikal Elektrikal)</option>
-                            <option>Kontraktor & Konstruksi</option>
-                        </select>
-                    </div>
-                    <div class="form-control">
-                        <label>Pesan / Detail Kebutuhan</label>
-                        <textarea rows="3" placeholder="Tuliskan detail kebutuhan Anda..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Kirim Pesan Sekarang</button>
-                </form>
-
-                <div class="thank-you-text">
-                    Terima kasih telah berkunjung<br>ke website kami
-                </div>
-            </div>
+            <p class="thank-you-text">Terima kasih telah berkunjung ke website kami 🙏</p>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 PT. BENDI ANTAR SELAMAT.</p>
-        <p>Seluruh Hak Cipta Dilindungi.</p>
+        <p>&copy; 2026 PT. BENDI ANTAR SELAMAT. Hak Cipta Dilindungi Undang-Undang. Sigap – Cepat – Tuntas.</p>
     </footer>
+
+    <!-- TOMBOL WHATSAPP FLOATING — ✅ SUDAH DIPERBAIKI -->
+    <a href="https://wa.me/6285750681600?text=Halo%20PT.%20BENDI%20ANTAR%20SELAMAT%2C%20saya%20ingin%20menanyakan%20tentang%20layanan%20Anda."
+       class="wa-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+
+    <!-- SCRIPT -->
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = {
+            beranda: document.getElementById('beranda'),
+            tentang: document.getElementById('tentang'),
+            layanan: document.getElementById('layanan'),
+            kontak: document.getElementById('kontak')
+        };
+
+        function setActiveMenu(targetId) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-target') === targetId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        document.getElementById('btn-beranda').addEventListener('click', function(e) {
+            e.preventDefault();
+            const logoHeader = document.getElementById('beranda');
+            window.scrollTo({
+                top: logoHeader.offsetTop - 5,
+                behavior: 'smooth'
+            });
+            setActiveMenu('beranda');
+        });
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-target') !== 'beranda') {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    const targetSection = sections[targetId];
+                    const offsetTop = targetSection.offsetTop - 20;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    setActiveMenu(targetId);
+                });
+            }
+        });
+
+        function onScroll() {
+            const scrollPos = window.scrollY + 120;
+            let currentId = 'beranda';
+
+            if (scrollPos >= sections.kontak.offsetTop) {
+                currentId = 'kontak';
+            } else if (scrollPos >= sections.layanan.offsetTop) {
+                currentId = 'layanan';
+            } else if (scrollPos >= sections.tentang.offsetTop) {
+                currentId = 'tentang';
+            } else {
+                currentId = 'beranda';
+            }
+
+            setActiveMenu(currentId);
+        }
+
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+            onScroll();
+        });
+    </script>
+
+    <!-- Visitor Counter -->
+    <script>
+        function getVisitorDates() {
+            const now = new Date();
+            const today = now.toISOString().slice(0, 10);
+            const month = now.toISOString().slice(0, 7);
+            return { today, month };
+        }
+
+        function updateCounter() {
+            const { today, month } = getVisitorDates();
+            let totalVisitors = Number(localStorage.getItem('totalVisitors') || 0);
+            let todayVisitors = Number(localStorage.getItem('todayVisitors') || 0);
+            let monthVisitors = Number(localStorage.getItem('monthVisitors') || 0);
+            let lastVisitDate = localStorage.getItem('lastVisitDate');
+            let lastVisitMonth = localStorage.getItem('lastVisitMonth');
+
+            totalVisitors++;
+
+            if (lastVisitDate !== today) {
+                todayVisitors = 1;
+                localStorage.setItem('lastVisitDate', today);
+            } else {
+                todayVisitors++;
+            }
+
+            if (lastVisitMonth !== month) {
+                monthVisitors = 1;
+                localStorage.setItem('lastVisitMonth', month);
+            } else {
+                monthVisitors++;
+            }
+
+            localStorage.setItem('totalVisitors', totalVisitors);
+            localStorage.setItem('todayVisitors', todayVisitors);
+            localStorage.setItem('monthVisitors', monthVisitors);
+
+            document.getElementById('totalVisitors').textContent = totalVisitors;
+            document.getElementById('todayVisitors').textContent = todayVisitors;
+            document.getElementById('monthVisitors').textContent = monthVisitors;
+        }
+
+        updateCounter();
+    </script>
 
 </body>
 </html>
