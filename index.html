@@ -639,21 +639,21 @@
             color: #CBD5E1;
         }
 
-        /* ===== TOMBOL WHATSAPP FLOATING ===== */
+        /* ===== TOMBOL WHATSAPP FLOATING — SUDAH DIPERKECIL ===== */
         .wa-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background-color: var(--accent-green);
             color: #fff;
-            padding: 12px 24px;
+            padding: 8px 16px;  /* ✅ Diperkecil dari 12px 24px */
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;  /* ✅ Diperkecil dari 10px */
             text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 15px;  /* ✅ Diperkecil dari 18px */
             box-shadow: 0 4px 12px rgba(37,211,102,0.3);
             z-index: 9999;
             transition: var(--transition);
@@ -662,10 +662,11 @@
         .wa-float:hover {
             background-color: #16A34A;
             color: #fff;
+            transform: scale(1.05);
         }
 
         .wa-float i {
-            font-size: 22px;
+            font-size: 19px;  /* ✅ Diperkecil dari 22px */
         }
 
         /* ===== RESPONSIVE ===== */
@@ -715,6 +716,14 @@
             .service-link {
                 font-size: 15px;
                 padding: 10px 24px;
+            }
+            /* ✅ Di HP lebih kecil lagi */
+            .wa-float {
+                padding: 7px 14px;
+                font-size: 14px;
+            }
+            .wa-float i {
+                font-size: 17px;
             }
             :root {
                 --nav-height: 56px;
@@ -948,7 +957,7 @@
         <p>&copy; 2026 PT. BENDI ANTAR SELAMAT. Hak Cipta Dilindungi Undang-Undang. Sigap – Cepat – Tuntas.</p>
     </footer>
 
-    <!-- TOMBOL WHATSAPP FLOATING -->
+    <!-- TOMBOL WHATSAPP FLOATING — SUDAH DIPERKECIL -->
     <a href="https://wa.me/6285750681600?text=Halo%20PT.%20BENDI%20ANTAR%20SELAMAT%2C%20saya%20ingin%20menanyakan%20tentang%20layanan%20Anda."
        class="wa-float" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
