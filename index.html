@@ -3,49 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <!-- ✅ TAMBAHAN: Paksa warna tetap terang di SEMUA perangkat -->
-    <meta name="color-scheme" content="light">
+    <!-- 🔒 PAKSA TAMPILAN TERANG — TIDAK BOLEH DIUBAH BROWSER -->
+    <meta name="color-scheme" content="light only">
     <meta name="theme-color" content="#0284C7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>PT. BENDI ANTAR SELAMAT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ✅ TAMBAHAN: Kunci warna tetap terang meskipun HP mode gelap */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-body: #F8FAFC !important;
-                --text-main: #1F2937 !important;
-                --text-white: #FFFFFF !important;
-            }
-            html, body {
-                background-color: #F8FAFC !important;
-                color: #1F2937 !important;
-            }
-            .logo-header { background-color: #FFFFFF !important; }
-            .card-modern, .team-section, .certificate-section,
-            .service-card, .map-box, .contact-form-box {
-                background-color: #FFFFFF !important;
-                color: #1F2937 !important;
-            }
-            .service-body { background-color: #FFFFFF !important; }
-            .form-control input, .form-control select, .form-control textarea {
-                background-color: #FAFBFC !important;
-                color: #1F2937 !important;
-            }
-        }
-
+        /* ==================================================
+           🔒 PAKSA WARNA TETAP TERANG — TIDAK BOLEH HITAM
+           ================================================== */
         :root {
+            color-scheme: light only !important;
             --primary: #0284C7;
             --primary-dark: #032E85;
             --primary-darker: #001E5C;
             --accent-red: #E53935;
             --primary-light: #E0F2FE;
             --accent-green: #25D366;
-            --text-main: #1F2937;
-            --text-white: #FFFFFF;
-            --bg-body: #F8FAFC;
+            --text-main: #1F2937 !important;
+            --text-white: #FFFFFF !important;
+            --bg-body: #F8FAFC !important;
             --border-color: #E2E8F0;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
@@ -66,27 +48,53 @@
             --nav-height: 64px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        /* 🔒 KUNCI WARNA SELURUH HALAMAN — TIDAK BISA DIUBAH */
         html {
+            background-color: #F8FAFC !important;
+            color: #1F2937 !important;
             scroll-behavior: smooth;
             scroll-padding-top: var(--nav-height);
-            background-color: #F8FAFC;
         }
 
         body {
             font-family: var(--font-family);
             font-size: var(--font-base);
             font-weight: 500;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: #F8FAFC !important;
+            color: #1F2937 !important;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             padding-top: 0;
+        }
+
+        /* 🔒 KUNCI WARNA SAAT HP MODE GELAP — DIPAKSA TERANG */
+        @media (prefers-color-scheme: dark) {
+            :root, html, body {
+                background-color: #F8FAFC !important;
+                color: #1F2937 !important;
+            }
+            .logo-header { background-color: #FFFFFF !important; }
+            .card-modern, .team-section, .certificate-section,
+            .service-card, .map-box, .contact-form-box {
+                background-color: #FFFFFF !important;
+                color: #1F2937 !important;
+            }
+            .service-body { background-color: #FFFFFF !important; }
+            .form-control input, .form-control select, .form-control textarea {
+                background-color: #FAFBFC !important;
+                color: #1F2937 !important;
+            }
+            .navbar { background: linear-gradient(180deg, #032E85, #001E5C) !important; }
+            footer { background-color: #0F172A !important; color: #94A3B8 !important; }
+            .visitor-stats { background: linear-gradient(135deg, #1E3A5F, #2C4A73) !important; color: #fff !important; }
+            .contact-info-box { background: linear-gradient(135deg, #0284C7, #0369A1) !important; color: #fff !important; }
+            .hero-wrapper { background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat !important; }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         /* ===== NAVIGASI ===== */
