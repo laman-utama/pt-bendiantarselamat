@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <!-- 🔒 PAKSA TAMPILAN TERANG — TIDAK BOLEH DIUBAH BROWSER -->
     <meta name="color-scheme" content="light only">
     <meta name="theme-color" content="#0284C7">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,9 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ==================================================
-           🔒 PAKSA WARNA TETAP TERANG — TIDAK BOLEH HITAM
-           ================================================== */
         :root {
             color-scheme: light only !important;
             --primary: #0284C7;
@@ -48,7 +44,6 @@
             --nav-height: 64px;
         }
 
-        /* 🔒 KUNCI WARNA SELURUH HALAMAN — TIDAK BISA DIUBAH */
         html {
             background-color: #F8FAFC !important;
             color: #1F2937 !important;
@@ -67,14 +62,13 @@
             padding-top: 0;
         }
 
-        /* 🔒 KUNCI WARNA SAAT HP MODE GELAP — DIPAKSA TERANG */
         @media (prefers-color-scheme: dark) {
             :root, html, body {
                 background-color: #F8FAFC !important;
                 color: #1F2937 !important;
             }
             .logo-header { background-color: #FFFFFF !important; }
-            .card-modern, .team-section, .certificate-section,
+            .card-modern, .ceo-section, .team-section, .certificate-section,
             .service-card, .map-box, .contact-form-box {
                 background-color: #FFFFFF !important;
                 color: #1F2937 !important;
@@ -85,7 +79,7 @@
                 color: #1F2937 !important;
             }
             .navbar { background: linear-gradient(180deg, #032E85, #001E5C) !important; }
-            footer { background-color: #0F172A !important; color: #94A3B8 !important; }
+            footer { background-color: #0F172A !important; color: #CBD5E1 !important; }
             .visitor-stats { background: linear-gradient(135deg, #1E3A5F, #2C4A73) !important; color: #fff !important; }
             .contact-info-box { background: linear-gradient(135deg, #0284C7, #0369A1) !important; color: #fff !important; }
             .hero-wrapper { background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat !important; }
@@ -97,7 +91,6 @@
             padding: 0;
         }
 
-        /* ===== NAVIGASI ===== */
         .navbar {
             background: linear-gradient(180deg, #032E85, #001E5C);
             width: 100%;
@@ -151,7 +144,6 @@
             font-weight: 700;
         }
 
-        /* ===== LOGO HEADER ===== */
         .logo-header {
             background-color: #FFFFFF;
             width: 100%;
@@ -176,7 +168,6 @@
             margin-bottom: 8px;
         }
 
-        /* ===== HERO SECTION ===== */
         .hero-wrapper {
             background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)),
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
@@ -229,7 +220,6 @@
             background-color: #C62828;
         }
 
-        /* ===== SECTION ===== */
         section {
             padding: 35px 20px;
             max-width: 680px;
@@ -239,6 +229,7 @@
         .section-header {
             text-align: center;
             margin-bottom: 6px;
+            margin-top: -10px;
         }
 
         .section-header span {
@@ -256,9 +247,9 @@
             font-weight: 700;
             color: var(--primary-dark);
             line-height: 1.3;
+            margin-bottom: 12px;
         }
 
-        /* ===== TENTANG KAMI ===== */
         .profile-grid {
             display: flex;
             flex-direction: column;
@@ -307,6 +298,32 @@
             text-align: center;
         }
 
+        /* ✅ BAGIAN CEO / DIREKTUR UTAMA */
+        .ceo-section {
+            background: #fff;
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ceo-section h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+
+        .ceo-img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+
         .team-section, .certificate-section {
             background: #fff;
             padding: 24px;
@@ -331,7 +348,6 @@
             border-radius: var(--radius-sm);
         }
 
-        /* ===== LAYANAN ===== */
         .services-grid {
             display: flex;
             flex-direction: column;
@@ -406,7 +422,10 @@
             color: var(--primary-darker);
         }
 
-        /* ===== KONTAK ===== */
+        #kontak {
+            padding-top: 15px;
+        }
+
         .contact-info-box {
             background: linear-gradient(135deg, #0284C7, #0369A1);
             color: var(--text-white);
@@ -448,7 +467,6 @@
             word-wrap: break-word;
         }
 
-        /* ===== MAP & FORM ===== */
         .map-box {
             background: #fff;
             padding: 20px;
@@ -624,36 +642,34 @@
             padding: 0;
         }
 
-        /* ===== FOOTER ===== */
         footer {
             background-color: #0F172A;
-            color: #94A3B8;
-            padding: 12px 20px;
+            color: #CBD5E1;
+            padding: 20px 20px;
             text-align: center;
-            font-size: var(--font-sm);
+            font-size: var(--font-base);
             margin-top: 0;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         footer p {
-            color: #CBD5E1;
+            margin-bottom: 4px;
         }
 
-        /* ===== TOMBOL WHATSAPP FLOATING — SUDAH DIPERKECIL ===== */
         .wa-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background-color: var(--accent-green);
             color: #fff;
-            padding: 8px 16px;  /* ✅ Diperkecil dari 12px 24px */
+            padding: 8px 16px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 6px;  /* ✅ Diperkecil dari 10px */
+            gap: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;  /* ✅ Diperkecil dari 18px */
+            font-size: 15px;
             box-shadow: 0 4px 12px rgba(37,211,102,0.3);
             z-index: 9999;
             transition: var(--transition);
@@ -666,10 +682,9 @@
         }
 
         .wa-float i {
-            font-size: 19px;  /* ✅ Diperkecil dari 22px */
+            font-size: 19px;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 520px) {
             .navbar {
                 padding: 10px 12px;
@@ -691,6 +706,9 @@
             }
             section {
                 padding: 30px 16px;
+            }
+            #kontak {
+                padding-top: 10px;
             }
             .contact-form-box, .contact-info-box {
                 padding: 20px 16px;
@@ -717,7 +735,6 @@
                 font-size: 15px;
                 padding: 10px 24px;
             }
-            /* ✅ Di HP lebih kecil lagi */
             .wa-float {
                 padding: 7px 14px;
                 font-size: 14px;
@@ -733,22 +750,19 @@
 </head>
 <body>
 
-    <!-- ===== NAVIGASI ===== -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#beranda" class="nav-link active" data-target="beranda" id="btn-beranda">BERANDA</a>
-            <a href="#tentang" class="nav-link" data-target="tentang">TENTANG KAMI</a>
+            <a href="#beranda" class="nav-link" data-target="beranda" id="btn-beranda">BERANDA</a>
+            <a href="#tentang" class="nav-link active" data-target="tentang">TENTANG KAMI</a>
             <a href="#layanan" class="nav-link" data-target="layanan">LAYANAN</a>
             <a href="#kontak" class="nav-link" data-target="kontak">KONTAK</a>
         </div>
     </nav>
 
-    <!-- ===== LOGO HEADER ===== -->
     <header class="logo-header" id="beranda">
         <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/LOGO%20PT.%20BAS.png" alt="PT. BENDI ANTAR SELAMAT" class="logo">
     </header>
 
-    <!-- ===== HERO ===== -->
     <div class="hero-wrapper">
         <section class="hero">
             <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
@@ -757,7 +771,6 @@
         </section>
     </div>
 
-    <!-- ===== TENTANG KAMI ===== -->
     <section id="tentang">
         <div class="section-header">
             <span>Tentang Kami</span>
@@ -780,8 +793,15 @@
                 <p>Membuka lapangan kerja luas, menerapkan standar pelatihan profesional, serta menjamin setiap penugasan diselesaikan tepat waktu dan dengan kualitas terbaik.</p>
             </div>
         </div>
+
+        <!-- ✅ BAGIAN CEO / DIREKTUR UTAMA — DITAMBAHKAN DI ATAS TIM KAMI -->
+        <div class="ceo-section">
+            <h3>CEO / Direktur Utama</h3>
+            <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/CEO%20PT.%20BAS.jpg" alt="Astriagnoer SHP, SE - Direktur Utama PT. BENDI ANTAR SELAMAT" class="ceo-img">
+        </div>
+
         <div class="team-section">
-            <h3>Tim Kami</h3>
+            <h3>TIM KAMI</h3>
             <img src="https://raw.githubusercontent.com/laman-utama/pt-bendiantarselamat/main/TIM%20BAS.JPG.jpg" alt="Tim PT. BENDI ANTAR SELAMAT" class="team-img">
         </div>
         <div class="certificate-section">
@@ -790,7 +810,6 @@
         </div>
     </section>
 
-    <!-- ===== LAYANAN ===== -->
     <section id="layanan">
         <div class="section-header">
             <span>Fokus Bisnis</span>
@@ -860,10 +879,9 @@
         </div>
     </section>
 
-    <!-- ===== KONTAK ===== -->
     <section id="kontak">
         <div class="section-header">
-            <span>Hubungi Kami</span>
+            <span>HUBUNGI KAMI</span>
             <h2>Silakan Hubungi Kami</h2>
         </div>
 
@@ -952,19 +970,18 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ✅ FOOTER / HAK CIPTA -->
     <footer>
-        <p>&copy; 2026 PT. BENDI ANTAR SELAMAT. Hak Cipta Dilindungi Undang-Undang. Sigap – Cepat – Tuntas.</p>
+        <p>© 2026 PT. BENDI ANTAR SELAMAT</p>
+        <p>Hak Cipta Dilindungi Undang-Undang</p>
     </footer>
 
-    <!-- TOMBOL WHATSAPP FLOATING — SUDAH DIPERKECIL -->
     <a href="https://wa.me/6285750681600?text=Halo%20PT.%20BENDI%20ANTAR%20SELAMAT%2C%20saya%20ingin%20menanyakan%20tentang%20layanan%20Anda."
        class="wa-float" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
     </a>
 
-    <!-- SCRIPT -->
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = {
@@ -1033,7 +1050,6 @@
         });
     </script>
 
-    <!-- Visitor Counter -->
     <script>
         function getVisitorDates() {
             const now = new Date();
