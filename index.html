@@ -74,7 +74,8 @@
                 color: #1F2937 !important;
             }
             .service-body { background-color: #FFFFFF !important; }
-            .form-control input, .form-control select, .form-control textarea {
+            .form-control input, .form-control select, .form-control textarea,
+            .layanan-checkbox-group label {
                 background-color: #FAFBFC !important;
                 color: #1F2937 !important;
             }
@@ -508,11 +509,21 @@
             margin-bottom: 0;
         }
 
-        .contact-form-box h3 {
-            font-size: var(--font-xl);
+        /* === FORMULIR PESANAN — SESUAI SCREENSHOT === */
+        .form-title {
+            font-size: 24px;
             font-weight: 700;
+            color: var(--primary);
             margin-bottom: 24px;
-            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-title i {
+            font-size: 22px;
         }
 
         .form-control {
@@ -521,29 +532,37 @@
 
         .form-control label {
             display: block;
-            font-size: var(--font-sm);
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--text-main);
         }
 
+        .form-control label span.required {
+            color: var(--accent-red);
+            margin-left: 2px;
+        }
+
         .form-control input,
-        .form-control select,
         .form-control textarea {
             width: 100%;
-            padding: 12px 14px;
+            padding: 14px 16px;
             border: 1px solid #CBD5E1;
             border-radius: var(--radius-sm);
             font-family: inherit;
-            font-size: var(--font-base);
+            font-size: 15px;
             font-weight: 500;
             outline: none;
             transition: var(--transition);
-            background-color: #FAFBFC;
+            background-color: #fff;
+        }
+
+        .form-control input::placeholder,
+        .form-control textarea::placeholder {
+            color: #94A3B8;
         }
 
         .form-control input:focus,
-        .form-control select:focus,
         .form-control textarea:focus {
             border-color: var(--primary);
             background-color: #fff;
@@ -551,8 +570,44 @@
         }
 
         .form-control textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
+        }
+
+        /* === LAYANAN — PILIH LEBIH DARI SATU (CHECKBOX) === */
+        .layanan-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .layanan-checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1px solid #CBD5E1;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .layanan-checkbox-group label:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .layanan-checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary);
+            flex-shrink: 0;
         }
 
         .btn-submit {
@@ -560,9 +615,9 @@
             background: linear-gradient(135deg, #0284C7, #0369A1);
             color: var(--text-white);
             border: none;
-            padding: 13px;
+            padding: 14px;
             border-radius: var(--radius-sm);
-            font-size: var(--font-base);
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -571,6 +626,7 @@
             gap: 8px;
             transition: var(--transition);
             font-family: inherit;
+            margin-top: 8px;
         }
 
         .btn-submit:hover {
@@ -732,6 +788,16 @@
             :root {
                 --nav-height: 56px;
             }
+            .form-title {
+                font-size: 20px;
+            }
+            .form-control label {
+                font-size: 15px;
+            }
+            .layanan-checkbox-group label {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
@@ -740,9 +806,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#beranda" class="nav-link" data-target="beranda" id="btn-beranda">BERANDA</a>
-            <a href="#tentang" class="nav-link active" data-target="tentang">TENTANG KAMI</a>
+            <a href="#tentang" class="nav-link" data-target="tentang">TENTANG KAMI</a>
             <a href="#layanan" class="nav-link" data-target="layanan">LAYANAN</a>
-            <a href="#kontak" class="nav-link" data-target="kontak">KONTAK</a>
+            <a href="#kontak" class="nav-link active" data-target="kontak">KONTAK</a>
         </div>
     </nav>
 
@@ -754,7 +820,7 @@
         <section class="hero">
             <h1>Mitra Unggulan & Terdepan untuk Kemajuan Perusahaan Anda</h1>
             <p>Menghadirkan pelayanan terpadu yang profesional, berdedikasi tinggi, serta berkomitmen menjaga kualitas terbaik bagi mitra kami.</p>
-            <a href="#layanan" class="btn-main">Lihat Layanan Kami</a>
+            <a href="#kontak" class="btn-main">Pesan Sekarang</a>
         </section>
     </div>
 
@@ -899,35 +965,45 @@
         </div>
 
         <div class="contact-form-box">
-            <h3>Kirim Pesan Sekarang</h3>
-            <form action="#" method="POST">
+            <!-- === FORMULIR PESANAN — SESUAI SCREENSHOT === -->
+            <h2 class="form-title"><i class="fas fa-envelope"></i> Formulir Pesanan</h2>
+            
+            <form action="#" method="POST" id="orderForm">
                 <div class="form-control">
-                    <label for="nama">Nama Lengkap</label>
+                    <label for="nama">Nama Lengkap <span class="required">*</span></label>
                     <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
                 </div>
+
                 <div class="form-control">
-                    <label for="telepon">Nomor WhatsApp / Telepon</label>
-                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
+                    <label for="perusahaan">Perusahaan</label>
+                    <input type="text" id="perusahaan" name="perusahaan" placeholder="Nama perusahaan">
                 </div>
+
                 <div class="form-control">
-                    <label for="layanan">Jenis Layanan</label>
-                    <select id="layanan" name="layanan" required>
-                        <option value="">-- Pilih Layanan --</option>
-                        <option>Cleaning Service</option>
-                        <option>Gardener & Taman</option>
-                        <option>Keamanan / Security</option>
-                        <option>Pengadaan Barang & Kimia</option>
-                        <option>Mekanikal & Elektrikal</option>
-                        <option>Kontraktor & Konstruksi</option>
-                        <option>Lainnya</option>
-                    </select>
+                    <label for="telepon">Telepon <span class="required">*</span></label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="Nomor WA/Telepon" required>
                 </div>
+
                 <div class="form-control">
-                    <label for="pesan">Pesan / Detail Kebutuhan</label>
-                    <textarea id="pesan" name="pesan" placeholder="Jelaskan detail kebutuhan Anda..." required></textarea>
+                    <label>Layanan Dibutuhkan <span class="required">*</span> <small style="font-weight:normal; font-size:13px; color:#64748b;">(Bisa pilih lebih dari satu)</small></label>
+                    <div class="layanan-checkbox-group">
+                        <label><input type="checkbox" name="layanan" value="Cleaning Service"> Cleaning Service</label>
+                        <label><input type="checkbox" name="layanan" value="Gardener & Taman"> Gardener & Taman</label>
+                        <label><input type="checkbox" name="layanan" value="Keamanan / Security"> Keamanan / Security</label>
+                        <label><input type="checkbox" name="layanan" value="Pengadaan Barang & Kimia"> Pengadaan Barang & Kimia</label>
+                        <label><input type="checkbox" name="layanan" value="Mekanikal & Elektrikal"> Mekanikal & Elektrikal</label>
+                        <label><input type="checkbox" name="layanan" value="Kontraktor & Konstruksi"> Kontraktor & Konstruksi</label>
+                        <label><input type="checkbox" name="layanan" value="Lainnya"> Lainnya</label>
+                    </div>
                 </div>
+
+                <div class="form-control">
+                    <label for="keterangan">Keterangan Pesanan <span class="required">*</span></label>
+                    <textarea id="keterangan" name="keterangan" placeholder="Tulis kebutuhan atau pesanan Anda..." required></textarea>
+                </div>
+
                 <button type="submit" class="btn-submit">
-                    <i class="fas fa-paper-plane"></i> Kirim Pesan Sekarang
+                    <i class="fas fa-paper-plane"></i> Kirim Pesanan Sekarang
                 </button>
             </form>
 
@@ -1030,6 +1106,46 @@
         window.addEventListener('load', function() {
             window.scrollTo(0, 0);
             onScroll();
+        });
+    </script>
+
+    <script>
+        // === FORMULIR PESANAN — KIRIM KE WHATSAPP ===
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('nama').value.trim();
+            const perusahaan = document.getElementById('perusahaan').value.trim();
+            const telepon = document.getElementById('telepon').value.trim();
+            const keterangan = document.getElementById('keterangan').value.trim();
+
+            // Ambil semua layanan yang dicentang
+            const layananCheckboxes = document.querySelectorAll('input[name="layanan"]:checked');
+            const layananTerpilih = Array.from(layananCheckboxes).map(cb => cb.value);
+
+            if (layananTerpilih.length === 0) {
+                alert('Silakan pilih minimal satu layanan!');
+                return;
+            }
+
+            // Susun pesan WhatsApp
+            let pesan = `📋 *FORMULIR PESANAN PT. BENDI ANTAR SELAMAT*
+
+👤 *Nama:* ${nama}
+🏢 *Perusahaan:* ${perusahaan || '-'}
+📞 *Telepon:* ${telepon}
+🛒 *Layanan Dibutuhkan:*
+${layananTerpilih.map(l => '✅ ' + l).join('\n')}
+
+📝 *Keterangan Pesanan:*
+${keterangan}
+
+---
+Kirim dari Website PT. BENDI ANTAR SELAMAT`;
+
+            // Encode & buka WhatsApp
+            const url = `https://wa.me/6285750681600?text=${encodeURIComponent(pesan)}`;
+            window.open(url, '_blank');
         });
     </script>
 
